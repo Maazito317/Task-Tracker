@@ -1,0 +1,19 @@
+{
+    // Enable general linting support
+    "python.linting.enabled": true,
+  
+    // Use Flake8 instead of Pylint
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+  
+    // Choose Black as your on-save formatter
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+  
+    // Pass Black-compatible config to isort
+    "python.sortImports.args": ["--profile", "black"],
+  
+    // Where VS Code looks for virtualenvs
+    "python.venvPath": "~/.virtualenvs"
+  }
+  
