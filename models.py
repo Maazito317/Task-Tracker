@@ -14,7 +14,27 @@ class Status(Enum):
 
 @dataclass
 class Task:
-    """A class representing a task."""
+    """
+    Task Class
+
+    A dataclass representing a task with attributes for task ID, description,
+    status, creation timestamp, and update timestamp. It includes methods for
+    converting the object to and from a dictionary representation.
+
+    Attributes:
+        id (int): The unique identifier for the task.
+        description (str): A brief description of the task.
+        status (Status): The current status of the task.
+        createdAt (datetime): The timestamp when the task was created.
+        updatedAt (datetime): The timestamp when the task was last updated.
+
+    Methods:
+        to_dict():
+            Converts the Task object into a dictionary representation.
+
+        from_dict(data: Dict[str, Any]):
+            Creates a Task object from a dictionary representation.
+    """
 
     id: int
     description: str

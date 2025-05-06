@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import argparse
 from models import Status
 from task_manager import TaskManager

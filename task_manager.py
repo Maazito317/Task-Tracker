@@ -6,6 +6,58 @@ from models import Task, Status
 
 
 class TaskManager:
+    """
+    TaskManager is a class for managing tasks stored in a JSON file.
+    It provides functionality to add, update, delete, and list tasks,
+    as well as mark their status.
+
+    Attributes:
+        path (str): The file path to the JSON file where tasks are stored.
+        tasks (List[Task]): A list of Task objects representing the current
+                            tasks.
+
+    Methods:
+        __init__(path: str = "tasks.json"):
+            Initializes the TaskManager with a specified file path and loads
+            tasks from the file.
+
+        _load_tasks():
+            Loads tasks from the JSON file. Creates the file if it doesn't
+            exist.
+
+        _save_tasks():
+            Saves the current tasks to the JSON file.
+
+        _next_id() -> int:
+            Returns the next available ID for a new task.
+
+        _find_task(task_id: int) -> Optional[Task]:
+            Finds and returns a task by its ID. Returns None if the task is
+            not found.
+
+        add_task(description: str) -> Task:
+            Adds a new task with the given description and returns the created
+            Task object.
+
+        update_task(task_id: int, description: str) -> Task:
+            Updates the description of an existing task by its ID and returns
+            the updated Task object.
+            Raises ValueError if the task is not found.
+
+        delete_task(task_id: int) -> Task:
+            Deletes a task by its ID and returns the deleted Task object.
+            Raises ValueError if the task is not found.
+
+        mark_status(task_id: int, status: Status):
+            Updates the status of a task (e.g., in progress or done) by its ID
+            and returns the updated Task object.
+            Raises ValueError if the task is not found.
+
+        list_tasks(status: Optional[Status] = None) -> List[Task]:
+            Returns a list of tasks. If a status is provided, filters tasks by
+            the given status.
+    """
+
     def __init__(self, path: str = "tasks.json"):
         self.path: str = path
         self.tasks: List[Task] = []
