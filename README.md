@@ -8,8 +8,8 @@ A lightweight command-line application to track and manage your tasks. Store tas
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/task-tracker-cli.git
-   cd task-tracker-cli
+   git clone https://github.com/Maazito317/Task-Tracker.git
+   cd Task-Tracker
    ```
 2. **(Optional) Set up a virtual environment:**
    ```bash
