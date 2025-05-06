@@ -107,11 +107,11 @@ def main():
         print(f"Task #{task.id} deleted.")
 
     elif args.command == "mark-in-progress":
-        task = manager.mark_in_progress(args.task_id)
+        task = manager.mark_status(args.task_id, Status.IN_PROGRESS)
         print(f"Task #{task.id} marked as in progress.")
 
     elif args.command == "mark-done":
-        task = manager.mark_done(args.task_id)
+        task = manager.mark_status(args.task_id, Status.DONE)
         print(f"Task #{task.id} marked as done.")
 
     elif args.command == "list":
