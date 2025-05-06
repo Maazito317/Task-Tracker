@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-import datetime
+from datetime import datetime
 from enum import Enum
 from typing import Dict, Any
 
@@ -8,7 +8,7 @@ class Status(Enum):
     """An enumeration representing the status of a task."""
 
     TODO = "todo"
-    IN_PROGRESS = "in-progress"
+    IN_PROGRESS = "in_progress"
     DONE = "done"
 
 

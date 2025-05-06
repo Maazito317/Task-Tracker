@@ -82,8 +82,7 @@ def parse_args():
         "status",
         type=str,
         nargs="?",
-        choices=["todo", "in-progress", "done"],
-        default="all",
+        choices=["todo", "in_progress", "done"],
         help="(optional) Filter tasks by status",
     )
 

@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import json
 import os
 from typing import List, Optional
@@ -70,6 +70,7 @@ class TaskManager:
         return task
 
     def mark_status(self, task_id: int, status: Status):
+        """Mark a task as in progress or done."""
         task = self._find_task(task_id)
         if task is None:
             raise ValueError(f"Task with ID {task_id} not found.")
@@ -79,6 +80,7 @@ class TaskManager:
         return task
 
     def list_tasks(self, status: Optional[Status] = None) -> List[Task]:
+        """List tasks. If status is provided, filter tasks by status."""
         if status is None:
             return self.tasks
         return [task for task in self.tasks if task.status == status]
