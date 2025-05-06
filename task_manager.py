@@ -64,7 +64,7 @@ class TaskManager:
         self._load_tasks()
 
     def _load_tasks(self):
-        """Load tasks from the JSON file. Create the file if it doesn't exist."""
+        """Load tasks from the JSON file. Create if it doesn't exist."""
         if not os.path.exists(self.path):
             with open(self.path, "w") as f:
                 json.dump([], f)
