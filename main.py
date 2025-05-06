@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import argparse
 from models import Status
 from task_manager import TaskManager
@@ -10,7 +12,7 @@ def parse_args():
     )
 
     subparsers = parser.add_subparsers(
-        dest="command", required=True, help="Available commands"
+        dest="command", required=True, help="Available task management commands"
     )
 
     # add: task-cli add "Do something"
@@ -82,8 +84,7 @@ def parse_args():
         "status",
         type=str,
         nargs="?",
-        choices=["todo", "in-progress", "done"],
-        default="all",
+        choices=[status.value for status in Status],
         help="(optional) Filter tasks by status",
     )
 
@@ -95,24 +96,39 @@ def main():
     manager = TaskManager()
 
     if args.command == "add":
-        task = manager.add_task(args.description)
-        print(f"Task added successfully (ID: {task.id})")
+        try:
+            task = manager.add_task(args.description)
+            print(f"Task added successfully (ID: {task.id})")
+        except Exception as e:
+            print(f"Failed to add task: {e}")
 
     elif args.command == "update":
-        task = manager.update_task(args.task_id, args.description)
-        print(f"Task updated successfully (ID: {task.id})")
+        try:
+            task = manager.update_task(args.task_id, args.description)
+            print(f"Task updated successfully (ID: {task.id})")
+        except ValueError as e:
+            print(f"Error: {e}")
 
     elif args.command == "delete":
-        task = manager.delete_task(args.task_id)
-        print(f"Task #{task.id} deleted.")
+        try:
+            task = manager.delete_task(args.task_id)
+            print(f"Task #{task.id} deleted.")
+        except ValueError as e:
+            print(f"Failed to delete task: {e}")
 
     elif args.command == "mark-in-progress":
-        task = manager.mark_in_progress(args.task_id)
-        print(f"Task #{task.id} marked as in progress.")
+        try:
+            task = manager.mark_status(args.task_id, Status.IN_PROGRESS)
+            print(f"Task #{task.id} marked as in progress.")
+        except ValueError as e:
+            print(f"Failed to mark in progress task: {e}")
 
     elif args.command == "mark-done":
-        task = manager.mark_done(args.task_id)
-        print(f"Task #{task.id} marked as done.")
+        try:
+            task = manager.mark_status(args.task_id, Status.DONE)
+            print(f"Task #{task.id} marked as done.")
+        except ValueError as e:
+            print(f"Failed to mark done task: {e}")
 
     elif args.command == "list":
         status = Status(args.status) if args.status else None
