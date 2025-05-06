@@ -43,7 +43,7 @@ Usage: task-cli [OPTIONS] COMMAND [ARGS]...
 | `task-cli delete <id>`                 | Delete the task with the specified ID                         | `task-cli delete 1`                           |
 | `task-cli mark-in-progress <id>`       | Mark the task as in-progress                                   | `task-cli mark-in-progress 2`                 |
 | `task-cli mark-done <id>`              | Mark the task as done                                          | `task-cli mark-done 2`                        |
-| `task-cli list [status]`               | List tasks. Optionally filter by status: `todo`, `in-progress`, `done` | `task-cli list` <br> `task-cli list done` |
+| `task-cli list [status]`               | List tasks. Optionally filter by status: `todo`, `in_progress`, `done` | `task-cli list` <br> `task-cli list done` |
 
 ---
 
@@ -78,7 +78,7 @@ $ task-cli list
 $ task-cli list todo
 1: Write detailed README [todo]
 
-$ task-cli list in-progress
+$ task-cli list in_progress
 (none)
 
 $ task-cli list done
